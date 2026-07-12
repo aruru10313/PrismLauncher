@@ -1163,37 +1163,33 @@ LaunchTask* MinecraftInstance::createLaunchTask(AuthSessionPtr session, Minecraf
         nbt::tag_list* serversListPtr = nullptr;
         if (rootTag->has_key("servers", nbt::tag_type::List)) {
             serversListPtr = &((*rootTag)["servers"].as<nbt::tag_list>());
-        } else {
-            rootTag->insert("servers", nbt::tag_list());
-            serversListPtr = &((*rootTag)["servers"].as<nbt::tag_list>());
         }
 
-        // Search if mc.xmaslegacy.xyz is already present
-        bool serverExists = false;
-        for (size_t i = 0; i < serversListPtr->size(); ++i) {
-            auto& sTag = (*serversListPtr)[i].as<nbt::tag_compound>();
-            if (sTag.has_key("ip", nbt::tag_type::String)) {
-                std::string ip = sTag["ip"].as<nbt::tag_string>().get();
-                if (ip == "mc.xmaslegacy.xyz") {
-                    serverExists = true;
-                    // Move it to the very top (index 0) if it isn't already
-                    if (i > 0) {
-                        nbt::tag_compound copy = sTag;
-                        serversListPtr->erase(serversListPtr->begin() + i);
-                        serversListPtr->insert(serversListPtr->begin(), copy);
+        // Create a new clean server list tag list of type tag_compound
+        nbt::tag_list newServersList(nbt::tag_type::Compound);
+
+        // Prepend mc.xmaslegacy.xyz to the top
+        nbt::tag_compound xmasServer;
+        xmasServer.insert("name", std::string("XmasLegacy Server"));
+        xmasServer.insert("ip", std::string("mc.xmaslegacy.xyz"));
+        newServersList.push_back(std::move(xmasServer));
+
+        // Copy remaining servers from the old list
+        if (serversListPtr) {
+            for (size_t i = 0; i < serversListPtr->size(); ++i) {
+                auto& sTag = (*serversListPtr)[i].as<nbt::tag_compound>();
+                if (sTag.has_key("ip", nbt::tag_type::String)) {
+                    std::string ip = sTag["ip"].as<nbt::tag_string>().get();
+                    if (ip == "mc.xmaslegacy.xyz") {
+                        continue; // Skip, since we already put it at index 0
                     }
-                    break;
                 }
+                newServersList.push_back(sTag);
             }
         }
 
-        // If it doesn't exist, create it and prepend it to the list
-        if (!serverExists) {
-            nbt::tag_compound newServer;
-            newServer.insert("name", std::string("XmasLegacy Server"));
-            newServer.insert("ip", std::string("mc.xmaslegacy.xyz"));
-            serversListPtr->insert(serversListPtr->begin(), newServer);
-        }
+        // Put the newly sorted list back into the rootTag compound
+        rootTag->insert("servers", std::move(newServersList));
 
         // Write servers.dat back to file
         try {
