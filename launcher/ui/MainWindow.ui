@@ -37,6 +37,12 @@
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>22</width>
+     <height>22</height>
+    </size>
+   </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonTextBesideIcon</enum>
    </property>
@@ -130,8 +136,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>1100</width>
+     <height>700</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">

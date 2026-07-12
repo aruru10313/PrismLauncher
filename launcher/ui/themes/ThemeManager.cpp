@@ -296,8 +296,9 @@ void ThemeManager::applyCurrentlySelectedTheme(bool initial)
     setIconTheme(settings->get("IconTheme").toString());
     themeDebugLog() << "<> Icon theme set.";
     auto applicationTheme = settings->get("ApplicationTheme").toString();
-    if (applicationTheme == "") {
-        applicationTheme = m_defaultStyle;
+    if (applicationTheme.isEmpty()) {
+        // Default to the Christmas Night theme for a premium first-run experience
+        applicationTheme = "summer_sea";
     }
     setApplicationTheme(applicationTheme, initial);
     themeDebugLog() << "<> Application theme set.";
