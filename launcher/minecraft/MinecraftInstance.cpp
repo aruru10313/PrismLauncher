@@ -1184,7 +1184,8 @@ LaunchTask* MinecraftInstance::createLaunchTask(AuthSessionPtr session, Minecraf
                         continue; // Skip, since we already put it at index 0
                     }
                 }
-                newServersList.push_back(sTag);
+                nbt::tag_compound copy = sTag;
+                newServersList.push_back(std::move(copy));
             }
         }
 
