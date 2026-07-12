@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 /*
  *  XmasLegacy - Minecraft Launcher
- *  Christmas Night Theme - A festive dark theme with Christmas colors
+ *  Christmas Night Theme
+ *  Design reference: Feather Client / Lunar Client dark UI
+ *  Key principles: clean, minimal, high contrast, restrained accent usage
  */
 #include "SummerSeaTheme.h"
 
@@ -19,7 +21,7 @@ QString SummerSeaTheme::name()
 
 QString SummerSeaTheme::tooltip()
 {
-    return QObject::tr("A festive dark theme inspired by Christmas night — deep navy backgrounds with crimson red and gold accents.");
+    return QObject::tr("A clean dark theme with Christmas accents, inspired by Feather Client.");
 }
 
 bool SummerSeaTheme::hasStyleSheet()
@@ -29,257 +31,354 @@ bool SummerSeaTheme::hasStyleSheet()
 
 QString SummerSeaTheme::appStyleSheet()
 {
-    // ─────────────────────────────────────────────────────────
-    // XmasLegacy – Christmas Night Theme (Compact Premium Edition)
-    // Color Palette:
-    //   Background Deep:  #0a0d14   (rich dark navy, midnight space)
-    //   Background Card:  #121620   (lighter navy module card)
-    //   Background Hover: #1b2030   (hover state)
-    //   Accent Red:       #e85d4a   (festive crimson red)
-    //   Accent Red Hover: #ff7663   (light glowing crimson)
-    //   Accent Gold:      #f5c518   (Christmas star gold)
-    //   Text Primary:     #f0f6fc   (near-white soft snow)
-    //   Text Secondary:   #8b949e   (muted frost gray)
-    //   Border:           #222a36   (subtle navy border)
-    // ─────────────────────────────────────────────────────────
+    // ──────────────────────────────────────────────────
+    // Design System — Feather/Lunar inspired
+    //
+    // Surface 0 (deepest):   #111116  — window bg
+    // Surface 1:             #1a1a22  — toolbar, sidebar
+    // Surface 2:             #222230  — cards, inputs
+    // Surface 3 (hover):     #2a2a3a  — hover states
+    // Border:                #2e2e3e  — very subtle borders
+    //
+    // Text primary:          #e8e8ed  — almost white
+    // Text secondary:        #7c7c8a  — muted
+    //
+    // Accent (Christmas):    #d94f43  — muted crimson
+    // Accent hover:          #e86458  — lighter crimson
+    // Accent gold:           #d4a826  — warm gold, sparingly
+    // ──────────────────────────────────────────────────
     return
-        // ── Global base ──────────────────────────────────────
-        "QWidget {"
-        "    background-color: #0a0d14;"
-        "    color: #f0f6fc;"
+
+        // ── Base ─────────────────────────────────────────
+        "* {"
         "    font-family: 'Segoe UI', 'Inter', 'Malgun Gothic', sans-serif;"
+        "}"
+
+        "QWidget {"
+        "    background-color: #111116;"
+        "    color: #e8e8ed;"
         "    font-size: 12px;"
         "}"
 
         "QMainWindow, QDialog {"
-        "    background-color: #0a0d14;"
+        "    background-color: #111116;"
         "}"
 
-        // ── ToolTip ───────────────────────────────────────────
+        // ── Tooltip ──────────────────────────────────────
         "QToolTip {"
-        "    color: #f0f6fc;"
-        "    background-color: #121620;"
-        "    border: 1px solid #e85d4a;"
-        "    border-radius: 6px;"
+        "    color: #e8e8ed;"
+        "    background-color: #1a1a22;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 4px;"
         "    padding: 4px 8px;"
-        "    font-size: 11px;"
         "}"
 
-        // ── Labels ────────────────────────────────────────────
+        // ── Labels ───────────────────────────────────────
         "QLabel {"
-        "    color: #f0f6fc;"
         "    background: transparent;"
         "}"
 
-        // ── Inputs ────────────────────────────────────────────
-        "QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox {"
-        "    background-color: #121620;"
-        "    color: #f0f6fc;"
-        "    border: 1px solid #222a36;"
+        // ── GroupBox ─────────────────────────────────────
+        "QGroupBox {"
+        "    border: 1px solid #2e2e3e;"
         "    border-radius: 6px;"
-        "    padding: 6px 10px;"
-        "    selection-background-color: #e85d4a;"
-        "    selection-color: #f0f6fc;"
+        "    margin-top: 8px;"
+        "    padding-top: 12px;"
         "}"
-        "QLineEdit:hover, QTextEdit:hover, QSpinBox:hover {"
-        "    border: 1px solid #8b949e;"
-        "    background-color: #1b2030;"
+        "QGroupBox::title {"
+        "    subcontrol-origin: margin;"
+        "    left: 10px;"
+        "    padding: 0 4px;"
+        "    color: #7c7c8a;"
+        "}"
+
+        // ── Inputs ───────────────────────────────────────
+        "QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox {"
+        "    background-color: #222230;"
+        "    color: #e8e8ed;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 4px;"
+        "    padding: 5px 8px;"
+        "    selection-background-color: #d94f43;"
+        "    selection-color: #ffffff;"
         "}"
         "QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus {"
-        "    border: 1px solid #e85d4a;"
-        "    background-color: #1b2030;"
+        "    border-color: #d94f43;"
         "}"
 
-        // ── ComboBox ─────────────────────────────────────────
+        // ── ComboBox ─────────────────────────────────────
         "QComboBox {"
-        "    background-color: #121620;"
-        "    color: #f0f6fc;"
-        "    border: 1px solid #222a36;"
-        "    border-radius: 6px;"
-        "    padding: 5px 10px;"
-        "    min-height: 18px;"
+        "    background-color: #222230;"
+        "    color: #e8e8ed;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 4px;"
+        "    padding: 4px 8px;"
         "}"
-        "QComboBox:hover {"
-        "    border: 1px solid #8b949e;"
-        "    background-color: #1b2030;"
+        "QComboBox QAbstractItemView {"
+        "    background-color: #1a1a22;"
+        "    border: 1px solid #2e2e3e;"
+        "    color: #e8e8ed;"
+        "    selection-background-color: #d94f43;"
+        "    selection-color: #ffffff;"
+        "    outline: none;"
         "}"
 
-        // ── Buttons (Lunar/Feather Gaming Style - Compact) ────
+        // ── QPushButton ──────────────────────────────────
+        // Default: subtle background, not screaming red
         "QPushButton {"
-        "    background-color: #e85d4a;"
-        "    color: #ffffff;"
-        "    border: none;"
-        "    border-radius: 6px;"
-        "    padding: 6px 12px;"
-        "    font-weight: bold;"
-        "    font-size: 12px;"
-        "    min-height: 18px;"
+        "    background-color: #222230;"
+        "    color: #e8e8ed;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 4px;"
+        "    padding: 5px 14px;"
+        "    font-weight: 600;"
         "}"
         "QPushButton:hover {"
-        "    background-color: #ff7663;"
+        "    background-color: #2a2a3a;"
+        "    border-color: #d94f43;"
         "}"
         "QPushButton:pressed {"
-        "    background-color: #c94535;"
+        "    background-color: #d94f43;"
+        "    color: #ffffff;"
+        "    border-color: #d94f43;"
         "}"
         "QPushButton:disabled {"
-        "    background-color: #21262d;"
-        "    color: #484f58;"
+        "    background-color: #1a1a22;"
+        "    color: #4a4a55;"
+        "    border-color: #222230;"
+        "}"
+        // Primary action buttons (OK, Accept)
+        "QPushButton:default {"
+        "    background-color: #d94f43;"
+        "    color: #ffffff;"
+        "    border-color: #d94f43;"
+        "}"
+        "QPushButton:default:hover {"
+        "    background-color: #e86458;"
         "}"
 
-        // ── Main ToolBar & Right Side Instance ToolBar ────────
+        // ── Menu ─────────────────────────────────────────
+        "QMenu {"
+        "    background-color: #1a1a22;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 4px;"
+        "    padding: 4px 0;"
+        "}"
+        "QMenu::item {"
+        "    padding: 5px 24px 5px 12px;"
+        "    color: #e8e8ed;"
+        "}"
+        "QMenu::item:selected {"
+        "    background-color: #2a2a3a;"
+        "}"
+        "QMenu::separator {"
+        "    height: 1px;"
+        "    background: #2e2e3e;"
+        "    margin: 4px 8px;"
+        "}"
+        "QMenuBar {"
+        "    background-color: #1a1a22;"
+        "    border-bottom: 1px solid #2e2e3e;"
+        "}"
+        "QMenuBar::item {"
+        "    padding: 4px 10px;"
+        "    background: transparent;"
+        "}"
+        "QMenuBar::item:selected {"
+        "    background-color: #2a2a3a;"
+        "    border-radius: 4px;"
+        "}"
+
+        // ── ToolBar ──────────────────────────────────────
         "QToolBar {"
-        "    background-color: #121620;"
+        "    background-color: #1a1a22;"
         "    border: none;"
-        "    border-bottom: 1px solid #222a36;"
-        "    padding: 4px 8px;"
-        "    spacing: 6px;"
+        "    border-bottom: 1px solid #2e2e3e;"
+        "    padding: 2px 4px;"
+        "    spacing: 2px;"
         "}"
         "QToolBar::separator {"
-        "    background-color: #222a36;"
+        "    background: #2e2e3e;"
         "    width: 1px;"
-        "    margin: 4px 6px;"
+        "    margin: 4px 4px;"
         "}"
 
-        // ── ToolBar Buttons (Compact) ────────────────────────
+        // ── ToolBar Buttons ──────────────────────────────
         "QToolBar QToolButton {"
-        "    background-color: transparent;"
-        "    color: #f0f6fc;"
-        "    border: 1px solid transparent;"
-        "    border-radius: 5px;"
-        "    padding: 4px 8px;"
-        "    font-weight: 500;"
+        "    background: transparent;"
+        "    color: #e8e8ed;"
+        "    border: none;"
+        "    border-radius: 4px;"
+        "    padding: 4px 6px;"
         "}"
         "QToolBar QToolButton:hover {"
-        "    background-color: #1b2030;"
-        "    border: 1px solid #222a36;"
+        "    background-color: #2a2a3a;"
         "}"
-        "QToolBar QToolButton:checked, QToolBar QToolButton:pressed {"
-        "    background-color: #e85d4a;"
+        "QToolBar QToolButton:pressed, QToolBar QToolButton:checked {"
+        "    background-color: #d94f43;"
         "    color: #ffffff;"
-        "    border: 1px solid #e85d4a;"
         "}"
 
-        // ── Active Account Profile Card (Pill Shape) ─────────
-        "QToolButton#actionAccountsButton, QToolButton[objectName='actionAccountsButton'] {"
-        "    background-color: #1b2030;"
-        "    border: 1px solid #e85d4a;"
-        "    border-radius: 12px;"
-        "    padding: 4px 10px;"
-        "    font-weight: bold;"
-        "    color: #f0f6fc;"
-        "}"
-        "QToolButton#actionAccountsButton:hover {"
-        "    background-color: #e85d4a;"
-        "    color: #ffffff;"
-        "    border-color: #ff7663;"
-        "}"
-
-        // ── Custom WideBar / Instance Side ToolBar (Compact) ──
+        // ── WideBar (Instance sidebar) ───────────────────
         "WideBar {"
-        "    background-color: #121620;"
-        "    border-left: 1px solid #222a36;"
-        "    padding: 8px;"
-        "    spacing: 8px;"
+        "    background-color: #1a1a22;"
+        "    border-left: 1px solid #2e2e3e;"
         "}"
         "WideBar QToolButton {"
-        "    background-color: #1b2030;"
-        "    border: 1px solid #222a36;"
-        "    border-radius: 6px;"
-        "    padding: 6px 8px;"
-        "    font-weight: bold;"
-        "    min-width: 90px;"
+        "    background-color: transparent;"
+        "    border: none;"
+        "    border-radius: 4px;"
+        "    padding: 5px 8px;"
+        "    color: #e8e8ed;"
+        "    text-align: left;"
         "}"
         "WideBar QToolButton:hover {"
-        "    background-color: #ff7663;"
-        "    color: #ffffff;"
-        "    border-color: #ff7663;"
+        "    background-color: #2a2a3a;"
         "}"
 
-        // ── ScrollBar ─────────────────────────────────────────
+        // ── ScrollBars ───────────────────────────────────
         "QScrollBar:vertical {"
-        "    background-color: #0a0d14;"
+        "    background: transparent;"
         "    width: 6px;"
         "    margin: 0;"
-        "    border-radius: 3px;"
         "}"
         "QScrollBar::handle:vertical {"
-        "    background-color: #222a36;"
-        "    min-height: 24px;"
+        "    background-color: #2e2e3e;"
+        "    min-height: 20px;"
         "    border-radius: 3px;"
         "}"
         "QScrollBar::handle:vertical:hover {"
-        "    background-color: #e85d4a;"
+        "    background-color: #7c7c8a;"
+        "}"
+        "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,"
+        "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+        "    background: transparent;"
+        "    height: 0;"
+        "}"
+        "QScrollBar:horizontal {"
+        "    background: transparent;"
+        "    height: 6px;"
+        "    margin: 0;"
+        "}"
+        "QScrollBar::handle:horizontal {"
+        "    background-color: #2e2e3e;"
+        "    min-width: 20px;"
+        "    border-radius: 3px;"
+        "}"
+        "QScrollBar::handle:horizontal:hover {"
+        "    background-color: #7c7c8a;"
+        "}"
+        "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal,"
+        "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
+        "    background: transparent;"
+        "    width: 0;"
         "}"
 
-        // ── Instance View Cards (Minecraft Card Layout) ────────
-        "QListView {"
-        "    background-color: #0a0d14;"
+        // ── Instance List View ───────────────────────────
+        "QListView, QTreeView, QTableView {"
+        "    background-color: #111116;"
         "    border: none;"
         "    outline: none;"
-        "    padding: 8px;"
         "}"
         "QListView::item {"
-        "    background-color: #121620;"
-        "    border: 1px solid #222a36;"
-        "    border-radius: 8px;"
-        "    padding: 10px;"
-        "    margin: 4px;"
-        "    color: #f0f6fc;"
+        "    background-color: #1a1a22;"
+        "    border: 1px solid transparent;"
+        "    border-radius: 6px;"
+        "    padding: 8px;"
+        "    margin: 3px;"
         "}"
         "QListView::item:hover {"
-        "    background-color: #1b2030;"
-        "    border: 1px solid #e85d4a;"
+        "    background-color: #222230;"
+        "    border-color: #2e2e3e;"
         "}"
         "QListView::item:selected {"
-        "    background-color: #1b2030;"
-        "    border: 1.5px solid #e85d4a;"
-        "    color: #ffffff;"
+        "    background-color: #222230;"
+        "    border-color: #d94f43;"
         "}"
 
-        // ── TabWidget / Settings ──────────────────────────────
+        // ── TreeView / TableView ─────────────────────────
+        "QTreeView::item, QTableView::item {"
+        "    padding: 4px;"
+        "}"
+        "QTreeView::item:hover, QTableView::item:hover {"
+        "    background-color: #222230;"
+        "}"
+        "QTreeView::item:selected, QTableView::item:selected {"
+        "    background-color: #2a2a3a;"
+        "    color: #ffffff;"
+        "}"
+        "QHeaderView::section {"
+        "    background-color: #1a1a22;"
+        "    color: #7c7c8a;"
+        "    border: none;"
+        "    border-bottom: 1px solid #2e2e3e;"
+        "    padding: 4px 8px;"
+        "    font-weight: 600;"
+        "}"
+
+        // ── TabWidget ────────────────────────────────────
         "QTabWidget::pane {"
-        "    border: 1px solid #222a36;"
-        "    border-radius: 8px;"
-        "    background-color: #121620;"
+        "    border: 1px solid #2e2e3e;"
+        "    border-radius: 6px;"
+        "    background-color: #1a1a22;"
         "}"
         "QTabBar::tab {"
-        "    background-color: transparent;"
-        "    color: #8b949e;"
-        "    padding: 8px 16px;"
-        "    font-weight: bold;"
+        "    background: transparent;"
+        "    color: #7c7c8a;"
+        "    padding: 6px 14px;"
+        "    border-bottom: 2px solid transparent;"
         "}"
         "QTabBar::tab:selected {"
-        "    color: #f0f6fc;"
-        "    border-bottom: 2.5px solid #e85d4a;"
+        "    color: #e8e8ed;"
+        "    border-bottom-color: #d94f43;"
+        "}"
+        "QTabBar::tab:hover {"
+        "    color: #e8e8ed;"
         "}"
 
-        // ── Progress Bar ──────────────────────────────────────
+        // ── ProgressBar ──────────────────────────────────
         "QProgressBar {"
-        "    background-color: #121620;"
-        "    border-radius: 6px;"
-        "    border: 1px solid #222a36;"
+        "    background-color: #222230;"
+        "    border: none;"
+        "    border-radius: 3px;"
         "    text-align: center;"
-        "    color: #ffffff;"
-        "    font-weight: bold;"
-        "    height: 16px;"
+        "    color: #e8e8ed;"
+        "    font-size: 11px;"
+        "    max-height: 6px;"
         "}"
         "QProgressBar::chunk {"
-        "    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-        "        stop:0 #e85d4a, stop:1 #f5c518);"
-        "    border-radius: 6px;"
+        "    background-color: #d94f43;"
+        "    border-radius: 3px;"
         "}"
 
-        // ── CheckBox ──────────────────────────────────────────
-        "QCheckBox::indicator {"
-        "    width: 16px;"
-        "    height: 16px;"
-        "    border-radius: 4px;"
-        "    border: 1.5px solid #222a36;"
-        "    background-color: #121620;"
+        // ── CheckBox & RadioButton ───────────────────────
+        "QCheckBox::indicator, QRadioButton::indicator {"
+        "    width: 14px;"
+        "    height: 14px;"
+        "    border: 1.5px solid #2e2e3e;"
+        "    background-color: #222230;"
         "}"
-        "QCheckBox::indicator:checked {"
-        "    background-color: #e85d4a;"
-        "    border-color: #e85d4a;"
+        "QCheckBox::indicator {"
+        "    border-radius: 3px;"
+        "}"
+        "QRadioButton::indicator {"
+        "    border-radius: 7px;"
+        "}"
+        "QCheckBox::indicator:checked, QRadioButton::indicator:checked {"
+        "    background-color: #d94f43;"
+        "    border-color: #d94f43;"
+        "}"
+
+        // ── StatusBar ────────────────────────────────────
+        "QStatusBar {"
+        "    background-color: #1a1a22;"
+        "    border-top: 1px solid #2e2e3e;"
+        "    color: #7c7c8a;"
+        "}"
+
+        // ── Splitter ─────────────────────────────────────
+        "QSplitter::handle {"
+        "    background-color: #2e2e3e;"
         "}"
         ;
 }
@@ -287,20 +386,29 @@ QString SummerSeaTheme::appStyleSheet()
 QPalette SummerSeaTheme::colorScheme()
 {
     QPalette palette;
-    palette.setColor(QPalette::Window,          QColor(10, 13, 20));     // #0a0d14
-    palette.setColor(QPalette::Base,            QColor(18, 22, 32));     // #121620
-    palette.setColor(QPalette::AlternateBase,   QColor(27, 32, 48));     // #1b2030
+    palette.setColor(QPalette::Window,          QColor(17, 17, 22));     // #111116
+    palette.setColor(QPalette::Base,            QColor(26, 26, 34));     // #1a1a22
+    palette.setColor(QPalette::AlternateBase,   QColor(34, 34, 48));     // #222230
 
-    palette.setColor(QPalette::WindowText,      QColor(240, 246, 252));  // #f0f6fc
-    palette.setColor(QPalette::Text,            QColor(240, 246, 252));
-    palette.setColor(QPalette::BrightText,      QColor(245, 197, 24));   // #f5c518 gold
-    palette.setColor(QPalette::PlaceholderText, QColor(139, 148, 158));  // #8b949e
+    palette.setColor(QPalette::WindowText,      QColor(232, 232, 237));  // #e8e8ed
+    palette.setColor(QPalette::Text,            QColor(232, 232, 237));
+    palette.setColor(QPalette::BrightText,      QColor(212, 168, 38));   // #d4a826
+    palette.setColor(QPalette::PlaceholderText, QColor(124, 124, 138));  // #7c7c8a
 
-    palette.setColor(QPalette::Button,          QColor(18, 22, 32));
-    palette.setColor(QPalette::ButtonText,      QColor(240, 246, 252));
+    palette.setColor(QPalette::Button,          QColor(34, 34, 48));     // #222230
+    palette.setColor(QPalette::ButtonText,      QColor(232, 232, 237));
 
-    palette.setColor(QPalette::Highlight,       QColor(232, 93, 74));    // #e85d4a crimson
+    palette.setColor(QPalette::Highlight,       QColor(217, 79, 67));    // #d94f43
     palette.setColor(QPalette::HighlightedText, QColor(255, 255, 255));
+
+    palette.setColor(QPalette::Light,           QColor(42, 42, 58));     // #2a2a3a
+    palette.setColor(QPalette::Midlight,        QColor(46, 46, 62));     // #2e2e3e
+    palette.setColor(QPalette::Mid,             QColor(46, 46, 62));
+    palette.setColor(QPalette::Dark,            QColor(17, 17, 22));
+    palette.setColor(QPalette::Shadow,          QColor(0, 0, 0));
+
+    palette.setColor(QPalette::Link,            QColor(217, 79, 67));
+    palette.setColor(QPalette::LinkVisited,     QColor(232, 100, 88));
 
     return fadeInactive(palette, fadeAmount(), fadeColor());
 }
@@ -312,5 +420,5 @@ double SummerSeaTheme::fadeAmount()
 
 QColor SummerSeaTheme::fadeColor()
 {
-    return QColor(10, 13, 20);
+    return QColor(17, 17, 22);
 }
