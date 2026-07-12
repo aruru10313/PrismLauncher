@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     viewBox="0 0 1024 1024" width="1024" height="1024">
-  <!-- XmasLegacy Launcher Icon -->
-  <!-- Dark navy background -->
-  <rect width="1024" height="1024" rx="180" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- XmasLegacy Snowy Minecraft Style Logo -->
+  <defs>
+    <!-- Stone gradients for logo body -->
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4e5154" />
+      <stop offset="100%" stop-color="#2a2c2e" />
+    </linearGradient>
+    <linearGradient id="snowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d0dbe5" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Midnight Background Panel -->
+  <rect width="1024" height="1024" rx="180" fill="#0a0d14"/>
+
+  <!-- Star Topper Glow -->
+  <circle cx="512" cy="180" r="160" fill="#f5c518" opacity="0.08"/>
+
+  <!-- Logo Group -->
+  <g transform="translate(112, 380)">
+    <!-- XMAS Text Shadow -->
+    <text x="400" y="110" font-family="'Impact', 'Arial Black', sans-serif" font-size="140" font-weight="900" fill="#000000" opacity="0.6" letter-spacing="6" text-anchor="middle">XMAS</text>
+    <text x="400" y="240" font-family="'Impact', 'Arial Black', sans-serif" font-size="130" font-weight="900" fill="#000000" opacity="0.6" letter-spacing="6" text-anchor="middle">LEGACY</text>
+
+    <!-- XMAS Text Main Body (Stone Texture) -->
+    <text x="396" y="104" font-family="'Impact', 'Arial Black', sans-serif" font-size="140" font-weight="900" fill="url(#stoneGrad)" stroke="#1a1b1c" stroke-width="8" letter-spacing="6" text-anchor="middle">XMAS</text>
+    <!-- LEGACY Text Main Body (Stone Texture) -->
+    <text x="396" y="234" font-family="'Impact', 'Arial Black', sans-serif" font-size="130" font-weight="900" fill="url(#stoneGrad)" stroke="#1a1b1c" stroke-width="8" letter-spacing="6" text-anchor="middle">LEGACY</text>
+
+    <!-- Snow Caps on Top of Letters (XMAS) -->
+    <!-- Soft snowy layers dripping down the text -->
+    <path d="M 120,0 Q 150,15 180,0 Q 210,18 240,0 Q 280,20 310,0 Q 350,15 380,0 L 680,0 Q 650,-20 620,-20 Z" fill="url(#snowGrad)" transform="translate(0, -34)" />
+    <path d="M 140,120 Q 170,135 200,120 Q 230,140 260,120 Q 300,138 340,120 Q 380,135 410,120 L 660,120 Q 630,100 600,100 Z" fill="url(#snowGrad)" transform="translate(0, -34)" />
+  </g>
+
+  <!-- Decorative Christmas Trees at the base -->
+  <polygon points="260,820 180,940 340,940" fill="#1b3f27" stroke="#0a0d14" stroke-width="6"/>
+  <polygon points="764,820 684,940 844,940" fill="#1b3f27" stroke="#0a0d14" stroke-width="6"/>
   
-  <!-- Christmas star at top -->
-  <polygon points="512,60 530,115 588,115 542,148 560,203 512,170 464,203 482,148 436,115 494,115"
-           fill="#f5c518" opacity="0.95"/>
-  
-  <!-- Christmas tree silhouette -->
-  <polygon points="512,200 380,500 440,500 360,700 450,700 410,820 614,820 574,700 664,700 584,500 644,500"
-           fill="#1a6b3a"/>
-  <!-- Tree trunk -->
-  <rect x="480" y="820" width="64" height="60" fill="#5a3820"/>
-  
-  <!-- Snow caps on tree -->
-  <polygon points="512,200 380,500 440,500" fill="white" opacity="0.4"/>
-  <polygon points="512,200 440,500 584,500" fill="white" opacity="0.2"/>
-  
-  <!-- Ornaments - Christmas red balls -->
-  <circle cx="420" cy="580" r="22" fill="#e85d4a"/>
-  <circle cx="604" cy="580" r="22" fill="#e85d4a"/>
-  <circle cx="460" cy="660" r="22" fill="#f5c518"/>
-  <circle cx="564" cy="660" r="22" fill="#f5c518"/>
-  <circle cx="512" cy="550" r="20" fill="#e85d4a" opacity="0.8"/>
-  
-  <!-- Gold star topper glow -->
-  <circle cx="512" cy="130" r="50" fill="#f5c518" opacity="0.15"/>
-  
-  <!-- Bottom label "XL" monogram -->
-  <text x="512" y="940" text-anchor="middle" font-family="Arial Black, sans-serif"
-        font-size="80" font-weight="900" fill="#f0f6fc" opacity="0.9" letter-spacing="4">XL</text>
-  
-  <!-- Subtle red glow at bottom -->
-  <ellipse cx="512" cy="900" rx="300" ry="30" fill="#e85d4a" opacity="0.08"/>
+  <!-- Falling Snowflakes around the logo -->
+  <circle cx="200" cy="220" r="10" fill="#ffffff" opacity="0.8"/>
+  <circle cx="820" cy="250" r="8" fill="#ffffff" opacity="0.6"/>
+  <circle cx="150" cy="500" r="12" fill="#ffffff" opacity="0.9"/>
+  <circle cx="880" cy="550" r="7" fill="#ffffff" opacity="0.7"/>
+  <circle cx="300" cy="300" r="9" fill="#ffffff" opacity="0.5"/>
+  <circle cx="700" cy="280" r="11" fill="#ffffff" opacity="0.85"/>
+  <circle cx="512" cy="180" r="18" fill="#f5c518" opacity="0.9"/> <!-- Golden Star -->
 </svg>
