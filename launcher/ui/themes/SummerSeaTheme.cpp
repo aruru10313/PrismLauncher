@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 /*
  *  XmasLegacy - Minecraft Launcher
- *  Christmas Night Theme
- *  Design reference: Feather Client / Lunar Client dark UI
- *  Key principles: clean, minimal, high contrast, restrained accent usage
+ *  Christmas Night Theme (Warm Charcoal & Coral Red Edition)
+ *  A cozy, warm, and highly polished theme.
  */
 #include "SummerSeaTheme.h"
 
@@ -21,7 +20,7 @@ QString SummerSeaTheme::name()
 
 QString SummerSeaTheme::tooltip()
 {
-    return QObject::tr("A clean dark theme with Christmas accents, inspired by Feather Client.");
+    return QObject::tr("A cozy dark theme with warm charcoal backgrounds and coral red accents.");
 }
 
 bool SummerSeaTheme::hasStyleSheet()
@@ -32,43 +31,39 @@ bool SummerSeaTheme::hasStyleSheet()
 QString SummerSeaTheme::appStyleSheet()
 {
     // ──────────────────────────────────────────────────
-    // Design System — Feather/Lunar inspired
+    // Design System — Cozy Charcoal & Coral Red
     //
-    // Surface 0 (deepest):   #111116  — window bg
-    // Surface 1:             #1a1a22  — toolbar, sidebar
-    // Surface 2:             #222230  — cards, inputs
-    // Surface 3 (hover):     #2a2a3a  — hover states
-    // Border:                #2e2e3e  — very subtle borders
+    // Surface 0 (Window BG): #15161a  — Warm charcoal
+    // Surface 1 (Cards, Tab):#1e1f25  — Slightly lighter gray
+    // Surface 2 (Hover):     #292a31  — Interaction color
+    // Border:                #2e2f37  — Clean subtle boundary
     //
-    // Text primary:          #e8e8ed  — almost white
-    // Text secondary:        #7c7c8a  — muted
-    //
-    // Accent (Christmas):    #d94f43  — muted crimson
-    // Accent hover:          #e86458  — lighter crimson
-    // Accent gold:           #d4a826  — warm gold, sparingly
+    // Text primary:          #f0f6fc  — Clean white
+    // Text secondary:        #8b949e  — Muted frost gray
+    // Accent (Coral Red):    #e05a47  — Friendly, warm red
+    // Accent Hover:          #eb7362  — Glowing coral red
     // ──────────────────────────────────────────────────
     return
-
         // ── Base ─────────────────────────────────────────
         "* {"
         "    font-family: 'Segoe UI', 'Inter', 'Malgun Gothic', sans-serif;"
         "}"
 
         "QWidget {"
-        "    background-color: #111116;"
-        "    color: #e8e8ed;"
+        "    background-color: #15161a;"
+        "    color: #f0f6fc;"
         "    font-size: 12px;"
         "}"
 
         "QMainWindow, QDialog {"
-        "    background-color: #111116;"
+        "    background-color: #15161a;"
         "}"
 
         // ── Tooltip ──────────────────────────────────────
         "QToolTip {"
-        "    color: #e8e8ed;"
-        "    background-color: #1a1a22;"
-        "    border: 1px solid #2e2e3e;"
+        "    color: #f0f6fc;"
+        "    background-color: #1e1f25;"
+        "    border: 1px solid #2e2f37;"
         "    border-radius: 4px;"
         "    padding: 4px 8px;"
         "}"
@@ -80,7 +75,7 @@ QString SummerSeaTheme::appStyleSheet()
 
         // ── GroupBox ─────────────────────────────────────
         "QGroupBox {"
-        "    border: 1px solid #2e2e3e;"
+        "    border: 1px solid #2e2f37;"
         "    border-radius: 6px;"
         "    margin-top: 8px;"
         "    padding-top: 12px;"
@@ -89,116 +84,114 @@ QString SummerSeaTheme::appStyleSheet()
         "    subcontrol-origin: margin;"
         "    left: 10px;"
         "    padding: 0 4px;"
-        "    color: #7c7c8a;"
+        "    color: #8b949e;"
         "}"
 
         // ── Inputs ───────────────────────────────────────
         "QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox {"
-        "    background-color: #222230;"
-        "    color: #e8e8ed;"
-        "    border: 1px solid #2e2e3e;"
-        "    border-radius: 4px;"
+        "    background-color: #1e1f25;"
+        "    color: #f0f6fc;"
+        "    border: 1px solid #2e2f37;"
+        "    border-radius: 5px;"
         "    padding: 5px 8px;"
-        "    selection-background-color: #d94f43;"
+        "    selection-background-color: #e05a47;"
         "    selection-color: #ffffff;"
         "}"
         "QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus {"
-        "    border-color: #d94f43;"
+        "    border-color: #e05a47;"
         "}"
 
         // ── ComboBox ─────────────────────────────────────
         "QComboBox {"
-        "    background-color: #222230;"
-        "    color: #e8e8ed;"
-        "    border: 1px solid #2e2e3e;"
-        "    border-radius: 4px;"
+        "    background-color: #1e1f25;"
+        "    color: #f0f6fc;"
+        "    border: 1px solid #2e2f37;"
+        "    border-radius: 5px;"
         "    padding: 4px 8px;"
         "}"
         "QComboBox QAbstractItemView {"
-        "    background-color: #1a1a22;"
-        "    border: 1px solid #2e2e3e;"
-        "    color: #e8e8ed;"
-        "    selection-background-color: #d94f43;"
+        "    background-color: #1e1f25;"
+        "    border: 1px solid #2e2f37;"
+        "    color: #f0f6fc;"
+        "    selection-background-color: #e05a47;"
         "    selection-color: #ffffff;"
         "    outline: none;"
         "}"
 
         // ── QPushButton ──────────────────────────────────
-        // Default: subtle background, not screaming red
         "QPushButton {"
-        "    background-color: #222230;"
-        "    color: #e8e8ed;"
-        "    border: 1px solid #2e2e3e;"
-        "    border-radius: 4px;"
-        "    padding: 5px 14px;"
+        "    background-color: #1e1f25;"
+        "    color: #f0f6fc;"
+        "    border: 1px solid #2e2f37;"
+        "    border-radius: 5px;"
+        "    padding: 6px 14px;"
         "    font-weight: 600;"
         "}"
         "QPushButton:hover {"
-        "    background-color: #2a2a3a;"
-        "    border-color: #d94f43;"
+        "    background-color: #292a31;"
+        "    border-color: #e05a47;"
         "}"
         "QPushButton:pressed {"
-        "    background-color: #d94f43;"
+        "    background-color: #e05a47;"
         "    color: #ffffff;"
-        "    border-color: #d94f43;"
+        "    border-color: #e05a47;"
         "}"
         "QPushButton:disabled {"
-        "    background-color: #1a1a22;"
-        "    color: #4a4a55;"
-        "    border-color: #222230;"
+        "    background-color: #15161a;"
+        "    color: #4f5056;"
+        "    border-color: #1e1f25;"
         "}"
-        // Primary action buttons (OK, Accept)
         "QPushButton:default {"
-        "    background-color: #d94f43;"
+        "    background-color: #e05a47;"
         "    color: #ffffff;"
-        "    border-color: #d94f43;"
+        "    border-color: #e05a47;"
         "}"
         "QPushButton:default:hover {"
-        "    background-color: #e86458;"
+        "    background-color: #eb7362;"
         "}"
 
         // ── Menu ─────────────────────────────────────────
         "QMenu {"
-        "    background-color: #1a1a22;"
-        "    border: 1px solid #2e2e3e;"
+        "    background-color: #1e1f25;"
+        "    border: 1px solid #2e2f37;"
         "    border-radius: 4px;"
         "    padding: 4px 0;"
         "}"
         "QMenu::item {"
         "    padding: 5px 24px 5px 12px;"
-        "    color: #e8e8ed;"
+        "    color: #f0f6fc;"
         "}"
         "QMenu::item:selected {"
-        "    background-color: #2a2a3a;"
+        "    background-color: #292a31;"
         "}"
         "QMenu::separator {"
         "    height: 1px;"
-        "    background: #2e2e3e;"
+        "    background: #2e2f37;"
         "    margin: 4px 8px;"
         "}"
         "QMenuBar {"
-        "    background-color: #1a1a22;"
-        "    border-bottom: 1px solid #2e2e3e;"
+        "    background-color: #1e1f25;"
+        "    border-bottom: 1px solid #2e2f37;"
         "}"
         "QMenuBar::item {"
         "    padding: 4px 10px;"
         "    background: transparent;"
         "}"
         "QMenuBar::item:selected {"
-        "    background-color: #2a2a3a;"
+        "    background-color: #292a31;"
         "    border-radius: 4px;"
         "}"
 
         // ── ToolBar ──────────────────────────────────────
         "QToolBar {"
-        "    background-color: #1a1a22;"
+        "    background-color: #1e1f25;"
         "    border: none;"
-        "    border-bottom: 1px solid #2e2e3e;"
-        "    padding: 2px 4px;"
-        "    spacing: 2px;"
+        "    border-bottom: 1px solid #2e2f37;"
+        "    padding: 3px 6px;"
+        "    spacing: 4px;"
         "}"
         "QToolBar::separator {"
-        "    background: #2e2e3e;"
+        "    background: #2e2f37;"
         "    width: 1px;"
         "    margin: 4px 4px;"
         "}"
@@ -206,34 +199,49 @@ QString SummerSeaTheme::appStyleSheet()
         // ── ToolBar Buttons ──────────────────────────────
         "QToolBar QToolButton {"
         "    background: transparent;"
-        "    color: #e8e8ed;"
+        "    color: #f0f6fc;"
         "    border: none;"
         "    border-radius: 4px;"
         "    padding: 4px 6px;"
         "}"
         "QToolBar QToolButton:hover {"
-        "    background-color: #2a2a3a;"
+        "    background-color: #292a31;"
         "}"
         "QToolBar QToolButton:pressed, QToolBar QToolButton:checked {"
-        "    background-color: #d94f43;"
+        "    background-color: #e05a47;"
         "    color: #ffffff;"
+        "}"
+
+        // ── Active Account Profile Card (Pill Shape) ─────────
+        "QToolButton#actionAccountsButton, QToolButton[objectName='actionAccountsButton'] {"
+        "    background-color: #292a31;"
+        "    border: 1px solid #e05a47;"
+        "    border-radius: 12px;"
+        "    padding: 3px 8px;"
+        "    font-weight: bold;"
+        "    color: #f0f6fc;"
+        "}"
+        "QToolButton#actionAccountsButton:hover {"
+        "    background-color: #e05a47;"
+        "    color: #ffffff;"
+        "    border-color: #eb7362;"
         "}"
 
         // ── WideBar (Instance sidebar) ───────────────────
         "WideBar {"
-        "    background-color: #1a1a22;"
-        "    border-left: 1px solid #2e2e3e;"
+        "    background-color: #1e1f25;"
+        "    border-left: 1px solid #2e2f37;"
         "}"
         "WideBar QToolButton {"
         "    background-color: transparent;"
         "    border: none;"
         "    border-radius: 4px;"
         "    padding: 5px 8px;"
-        "    color: #e8e8ed;"
+        "    color: #f0f6fc;"
         "    text-align: left;"
         "}"
         "WideBar QToolButton:hover {"
-        "    background-color: #2a2a3a;"
+        "    background-color: #292a31;"
         "}"
 
         // ── ScrollBars ───────────────────────────────────
@@ -243,57 +251,40 @@ QString SummerSeaTheme::appStyleSheet()
         "    margin: 0;"
         "}"
         "QScrollBar::handle:vertical {"
-        "    background-color: #2e2e3e;"
+        "    background-color: #2e2f37;"
         "    min-height: 20px;"
         "    border-radius: 3px;"
         "}"
         "QScrollBar::handle:vertical:hover {"
-        "    background-color: #7c7c8a;"
+        "    background-color: #8b949e;"
         "}"
         "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,"
         "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
         "    background: transparent;"
         "    height: 0;"
         "}"
-        "QScrollBar:horizontal {"
-        "    background: transparent;"
-        "    height: 6px;"
-        "    margin: 0;"
-        "}"
-        "QScrollBar::handle:horizontal {"
-        "    background-color: #2e2e3e;"
-        "    min-width: 20px;"
-        "    border-radius: 3px;"
-        "}"
-        "QScrollBar::handle:horizontal:hover {"
-        "    background-color: #7c7c8a;"
-        "}"
-        "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal,"
-        "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
-        "    background: transparent;"
-        "    width: 0;"
-        "}"
 
         // ── Instance List View ───────────────────────────
         "QListView, QTreeView, QTableView {"
-        "    background-color: #111116;"
+        "    background-color: #15161a;"
         "    border: none;"
         "    outline: none;"
         "}"
         "QListView::item {"
-        "    background-color: #1a1a22;"
+        "    background-color: #1e1f25;"
         "    border: 1px solid transparent;"
         "    border-radius: 6px;"
         "    padding: 8px;"
         "    margin: 3px;"
         "}"
         "QListView::item:hover {"
-        "    background-color: #222230;"
-        "    border-color: #2e2e3e;"
+        "    background-color: #292a31;"
+        "    border-color: #2e2f37;"
         "}"
         "QListView::item:selected {"
-        "    background-color: #222230;"
-        "    border-color: #d94f43;"
+        "    background-color: #292a31;"
+        "    border-left: 3px solid #e05a47;"
+        "    border-color: #2e2f37;"
         "}"
 
         // ── TreeView / TableView ─────────────────────────
@@ -301,53 +292,53 @@ QString SummerSeaTheme::appStyleSheet()
         "    padding: 4px;"
         "}"
         "QTreeView::item:hover, QTableView::item:hover {"
-        "    background-color: #222230;"
+        "    background-color: #292a31;"
         "}"
         "QTreeView::item:selected, QTableView::item:selected {"
-        "    background-color: #2a2a3a;"
+        "    background-color: #292a31;"
         "    color: #ffffff;"
         "}"
         "QHeaderView::section {"
-        "    background-color: #1a1a22;"
-        "    color: #7c7c8a;"
+        "    background-color: #1e1f25;"
+        "    color: #8b949e;"
         "    border: none;"
-        "    border-bottom: 1px solid #2e2e3e;"
+        "    border-bottom: 1px solid #2e2f37;"
         "    padding: 4px 8px;"
         "    font-weight: 600;"
         "}"
 
         // ── TabWidget ────────────────────────────────────
         "QTabWidget::pane {"
-        "    border: 1px solid #2e2e3e;"
+        "    border: 1px solid #2e2f37;"
         "    border-radius: 6px;"
-        "    background-color: #1a1a22;"
+        "    background-color: #1e1f25;"
         "}"
         "QTabBar::tab {"
         "    background: transparent;"
-        "    color: #7c7c8a;"
+        "    color: #8b949e;"
         "    padding: 6px 14px;"
         "    border-bottom: 2px solid transparent;"
         "}"
         "QTabBar::tab:selected {"
-        "    color: #e8e8ed;"
-        "    border-bottom-color: #d94f43;"
+        "    color: #f0f6fc;"
+        "    border-bottom-color: #e05a47;"
         "}"
         "QTabBar::tab:hover {"
-        "    color: #e8e8ed;"
+        "    color: #f0f6fc;"
         "}"
 
         // ── ProgressBar ──────────────────────────────────
         "QProgressBar {"
-        "    background-color: #222230;"
+        "    background-color: #1e1f25;"
         "    border: none;"
         "    border-radius: 3px;"
         "    text-align: center;"
-        "    color: #e8e8ed;"
+        "    color: #f0f6fc;"
         "    font-size: 11px;"
         "    max-height: 6px;"
         "}"
         "QProgressBar::chunk {"
-        "    background-color: #d94f43;"
+        "    background-color: #e05a47;"
         "    border-radius: 3px;"
         "}"
 
@@ -355,8 +346,8 @@ QString SummerSeaTheme::appStyleSheet()
         "QCheckBox::indicator, QRadioButton::indicator {"
         "    width: 14px;"
         "    height: 14px;"
-        "    border: 1.5px solid #2e2e3e;"
-        "    background-color: #222230;"
+        "    border: 1.5px solid #2e2f37;"
+        "    background-color: #1e1f25;"
         "}"
         "QCheckBox::indicator {"
         "    border-radius: 3px;"
@@ -365,20 +356,20 @@ QString SummerSeaTheme::appStyleSheet()
         "    border-radius: 7px;"
         "}"
         "QCheckBox::indicator:checked, QRadioButton::indicator:checked {"
-        "    background-color: #d94f43;"
-        "    border-color: #d94f43;"
+        "    background-color: #e05a47;"
+        "    border-color: #e05a47;"
         "}"
 
         // ── StatusBar ────────────────────────────────────
         "QStatusBar {"
-        "    background-color: #1a1a22;"
-        "    border-top: 1px solid #2e2e3e;"
-        "    color: #7c7c8a;"
+        "    background-color: #1e1f25;"
+        "    border-top: 1px solid #2e2f37;"
+        "    color: #8b949e;"
         "}"
 
         // ── Splitter ─────────────────────────────────────
         "QSplitter::handle {"
-        "    background-color: #2e2e3e;"
+        "    background-color: #2e2f37;"
         "}"
         ;
 }
@@ -386,29 +377,29 @@ QString SummerSeaTheme::appStyleSheet()
 QPalette SummerSeaTheme::colorScheme()
 {
     QPalette palette;
-    palette.setColor(QPalette::Window,          QColor(17, 17, 22));     // #111116
-    palette.setColor(QPalette::Base,            QColor(26, 26, 34));     // #1a1a22
-    palette.setColor(QPalette::AlternateBase,   QColor(34, 34, 48));     // #222230
+    palette.setColor(QPalette::Window,          QColor(21, 22, 26));     // #15161a
+    palette.setColor(QPalette::Base,            QColor(30, 31, 37));     // #1e1f25
+    palette.setColor(QPalette::AlternateBase,   QColor(41, 42, 49));     // #292a31
 
-    palette.setColor(QPalette::WindowText,      QColor(232, 232, 237));  // #e8e8ed
-    palette.setColor(QPalette::Text,            QColor(232, 232, 237));
-    palette.setColor(QPalette::BrightText,      QColor(212, 168, 38));   // #d4a826
-    palette.setColor(QPalette::PlaceholderText, QColor(124, 124, 138));  // #7c7c8a
+    palette.setColor(QPalette::WindowText,      QColor(240, 246, 252));  // #f0f6fc
+    palette.setColor(QPalette::Text,            QColor(240, 246, 252));
+    palette.setColor(QPalette::BrightText,      QColor(245, 197, 24));   // #f5c518 gold
+    palette.setColor(QPalette::PlaceholderText, QColor(139, 148, 158));  // #8b949e
 
-    palette.setColor(QPalette::Button,          QColor(34, 34, 48));     // #222230
-    palette.setColor(QPalette::ButtonText,      QColor(232, 232, 237));
+    palette.setColor(QPalette::Button,          QColor(30, 31, 37));
+    palette.setColor(QPalette::ButtonText,      QColor(240, 246, 252));
 
-    palette.setColor(QPalette::Highlight,       QColor(217, 79, 67));    // #d94f43
+    palette.setColor(QPalette::Highlight,       QColor(224, 90, 71));    // #e05a47 coral red
     palette.setColor(QPalette::HighlightedText, QColor(255, 255, 255));
 
-    palette.setColor(QPalette::Light,           QColor(42, 42, 58));     // #2a2a3a
-    palette.setColor(QPalette::Midlight,        QColor(46, 46, 62));     // #2e2e3e
-    palette.setColor(QPalette::Mid,             QColor(46, 46, 62));
-    palette.setColor(QPalette::Dark,            QColor(17, 17, 22));
+    palette.setColor(QPalette::Light,           QColor(41, 42, 49));
+    palette.setColor(QPalette::Midlight,        QColor(46, 47, 55));
+    palette.setColor(QPalette::Mid,             QColor(46, 47, 55));
+    palette.setColor(QPalette::Dark,            QColor(21, 22, 26));
     palette.setColor(QPalette::Shadow,          QColor(0, 0, 0));
 
-    palette.setColor(QPalette::Link,            QColor(217, 79, 67));
-    palette.setColor(QPalette::LinkVisited,     QColor(232, 100, 88));
+    palette.setColor(QPalette::Link,            QColor(224, 90, 71));
+    palette.setColor(QPalette::LinkVisited,     QColor(235, 115, 98));
 
     return fadeInactive(palette, fadeAmount(), fadeColor());
 }
@@ -420,5 +411,5 @@ double SummerSeaTheme::fadeAmount()
 
 QColor SummerSeaTheme::fadeColor()
 {
-    return QColor(17, 17, 22);
+    return QColor(21, 22, 26);
 }
