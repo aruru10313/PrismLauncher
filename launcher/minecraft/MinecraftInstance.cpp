@@ -47,6 +47,12 @@
 #include "MMCTime.h"
 #include "java/JavaVersion.h"
 
+#include <tag_compound.h>
+#include <tag_list.h>
+#include <tag_primitive.h>
+#include <tag_string.h>
+#include <sstream>
+
 #include "launch/LaunchTask.h"
 #include "launch/TaskStepWrapper.h"
 #include "launch/steps/CheckJava.h"
@@ -1128,6 +1134,77 @@ LaunchTask* MinecraftInstance::createLaunchTask(AuthSessionPtr session, Minecraf
     updateRuntimeContext();
     auto process = LaunchTask::create(this);
     auto pptr = process.get();
+
+    // Auto-inject mc.xmaslegacy.xyz into servers.dat
+    {
+        QString serversDatPath = FS::PathCombine(gameRoot(), "servers.dat");
+        std::unique_ptr<nbt::tag_compound> rootTag;
+        
+        // Try reading existing servers.dat
+        try {
+            if (QFile::exists(serversDatPath)) {
+                QByteArray input = FS::read(serversDatPath);
+                std::istringstream stream(std::string(input.constData(), input.size()));
+                auto pair = nbt::io::read_compound(stream);
+                if (pair.second != nullptr) {
+                    rootTag = std::move(pair.second);
+                }
+            }
+        } catch (...) {
+            // Ignore parse errors, will overwrite/recreate below
+        }
+
+        if (!rootTag) {
+            rootTag = std::make_unique<nbt::tag_compound>();
+        }
+
+        nbt::tag_list* serversListPtr = nullptr;
+        if (rootTag->has_key("servers", nbt::tag_type::List)) {
+            serversListPtr = &((*rootTag)["servers"].as<nbt::tag_list>());
+        } else {
+            rootTag->insert("servers", nbt::tag_list());
+            serversListPtr = &((*rootTag)["servers"].as<nbt::tag_list>());
+        }
+
+        // Search if mc.xmaslegacy.xyz is already present
+        bool serverExists = false;
+        for (size_t i = 0; i < serversListPtr->size(); ++i) {
+            auto& sTag = (*serversListPtr)[i].as<nbt::tag_compound>();
+            if (sTag.has_key("ip", nbt::tag_type::String)) {
+                std::string ip = sTag["ip"].as<nbt::tag_string>().get();
+                if (ip == "mc.xmaslegacy.xyz") {
+                    serverExists = true;
+                    // Move it to the very top (index 0) if it isn't already
+                    if (i > 0) {
+                        nbt::tag_compound copy = sTag;
+                        serversListPtr->erase(serversListPtr->begin() + i);
+                        serversListPtr->insert(serversListPtr->begin(), copy);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // If it doesn't exist, create it and prepend it to the list
+        if (!serverExists) {
+            nbt::tag_compound newServer;
+            newServer.insert("name", std::string("XmasLegacy Server"));
+            newServer.insert("ip", std::string("mc.xmaslegacy.xyz"));
+            serversListPtr->insert(serversListPtr->begin(), newServer);
+        }
+
+        // Write servers.dat back to file
+        try {
+            if (FS::ensureFilePathExists(serversDatPath)) {
+                std::ostringstream s;
+                nbt::io::write_tag("", *rootTag, s);
+                QByteArray val(s.str().data(), (int)s.str().size());
+                FS::write(serversDatPath, val);
+            }
+        } catch (...) {
+            // Write failed, ignore to prevent launch crash
+        }
+    }
 
     APPLICATION->icons()->saveIcon(iconKey(), FS::PathCombine(gameRoot(), "icon.png"), "PNG");
 
