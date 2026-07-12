@@ -51,6 +51,8 @@
 #include <tag_list.h>
 #include <tag_primitive.h>
 #include <tag_string.h>
+#include <io/stream_reader.h>
+#include <io/stream_writer.h>
 #include <sstream>
 
 #include "launch/LaunchTask.h"
