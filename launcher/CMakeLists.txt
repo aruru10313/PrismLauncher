@@ -880,6 +880,8 @@ SET(LAUNCHER_SOURCES
     ui/themes/IconTheme.h
     ui/themes/ThemeManager.cpp
     ui/themes/ThemeManager.h
+    ui/themes/SummerSeaTheme.cpp
+    ui/themes/SummerSeaTheme.h
     ui/themes/CatPack.cpp
     ui/themes/CatPack.h
     ui/themes/CatPainter.cpp
